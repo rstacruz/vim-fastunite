@@ -15,7 +15,7 @@ Unite is amazing but is ridiculously hard to configure. I've done all the heavy 
 
 -  Documentation to follow, please bear with us!
 
-**[Documentation →](https://raw.githubusercontent.com/rstacruz/vim-fastunite/master/doc/fastunite.txt)**
+**[Documentation →](doc/fastunite.txt)**
 
 <br>
 
