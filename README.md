@@ -1,6 +1,6 @@
 # vim-fastunite
 
-The fastest way to navigate your files powered by [unite.vim]. Just press `<Ctrl-P>`.
+The fastest way to navigate your files powered by [unite.vim]. Just press `Ctrl-P`. No lags.
 
 ![](http://ricostacruz.com/vim-fastunite/screencast.gif)
 
@@ -84,17 +84,19 @@ So you've probably tried Unite before. You added a few lines to your vimrc to ge
 
 This plugin is a bag of many tweaks to make the Unite experience more seamless. Here are a few:
 
-* Faster file search: If `ag` is available, it's used for `file_rec`. 
+* *Faster file search:* If `ag` is available, it's used for `file_rec`. 
 
-* Mercurial support: by using `ag`, .hgignore and .bzrignore are supported.
+* *Mercurial support:* by using `ag`, .hgignore and .bzrignore are supported.
 
-* Use better sorting: If ruby is available in your Vim build, a better sorting method will be selected for you
+* *Use better sorting:* If `+ruby` is available in your Vim build, a better sorting method (selecta) will be selected for you. This gets you better top results, saving you keystrokes.
 
-* Mappings: all the useful key mappings are set up for you
+* *Kep mappings:* all the useful key mappings are set up for you, set up conveniently with a configurable `<Leader> u` prefix.
 
-* Airline: improves integration with airline
+* *Sleeker airline:* provides a more pleasant integration with airline.vim by omitting extraneous statusbar information.
 
-* Faster grepping: `ag` will be used for grepping if it's available
+* *Faster grepping:* `ag` will be used for grepping if it's available.
+
+* *Better unite-tag integration:* if `unite-tag` is installed, it will be used as the tag browser when pressing `^]`.
 
 * And many more.
 
