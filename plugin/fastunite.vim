@@ -87,7 +87,7 @@ nnoremap <silent> [unite]f
 nnoremap <silent> [unite]g
   \ :<C-u>Unite -buffer-name=grep
   \ -start-insert
-  \ buffer<CR>
+  \ grep:.<CR>
 
 " buffer
 nnoremap <silent> [unite]b
