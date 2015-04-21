@@ -1,19 +1,27 @@
 # vim-fastunite
 
-:construction: **Opinionated distribution of [unite.vim].**<br>
+The fastest way to navigate your files powered by [unite.vim]. Just press `<Ctrl-P>`.
 
-Unite is amazing but is ridiculously hard to configure. I've done all the heavy lifting for you and came up with a sensible one-size-fits-all package to get you productive on Unite.vim.
+<br>
 
-- **Fast searches:** !!<br>
-  Uses `ag` when available for the fastest file finding interface available
+## About
 
-- **Cached windows:** !!<br>
-  Unite instances are cached, so pressing `,up` again will be super-fast
+vim-fastunite is an optimized and opinionated distribution of [unite.vim].
+
+Unite is amazing, but is so hard to configure. I've done the heavy lifting for you. Here's a sensible one-size-fits-all package to get you productive on Unite.vim.
+
+- **Batteries included:**<br>
+  Just install the vim plugins needed and `ag`, no need for complicated vimrc incantations.
+
+- **Fast indexing:**<br>
+  Uses `ag` to index your files... many orders of magnitude faster than the default.
+
+- **Cached windows:**<br>
+  Invoking Unite after the first time is instantaneous.  Unite sessions are
+  cached, so pressing `,up` again will resume the previous session.
 
 - **Preconfigured matchers:**<br>
-  Matchers were configured and optimized to work with neovim, vim, etc.
-
--  Documentation to follow, please bear with us!
+  Fuzzy matching, smart sorting... maximum productivity.
 
 **[Documentation →](doc/fastunite.txt)**
 
