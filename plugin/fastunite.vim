@@ -4,13 +4,24 @@ if globpath(&rtp, "plugin/unite.vim") == ""
 endif
 
 "
+" Feature Detection:
+"
+
+let s:has_neomru = globpath(&rtp, "plugin/neomru.vim") == ""
+let s:has_tag = globpath(&rtp, "autoload/unite/sources/tag.vim") != ""
+let s:has_ag = executable('ag')
+
+"
 " Settings:
 "   some reasonable default settings.
 "
 
 let g:unite_data_directory = expand("~/.cache/unite")
 let g:unite_prompt = '  →  '
-let g:unite_source_tag_max_fname_length = 70
+
+if s:has_tag
+  let g:unite_source_tag_max_fname_length = 70
+endif
 
 "
 " Unite Marks:
@@ -27,7 +38,7 @@ let g:unite_source_mark_marks =
 "   https://github.com/Shougo/unite.vim/issues/398#issuecomment-27012821
 "
 
-if executable('ag')
+if s:has_ag
   let g:unite_source_rec_async_command =
     \ 'ag --nocolor --nogroup -g ""'
 endif
@@ -48,7 +59,7 @@ call unite#custom#source('tag', 'sorters', ['sorter_rank'])
 "
 
 let s:file_recs = 'file_rec,file_rec/async'
-if globpath(&rtp, "autoload/unite/sources/tag.vim") != ""
+if s:has_tag
   let s:file_recs .= 'tag'
 endif
 
@@ -62,7 +73,7 @@ call unite#custom#source(s:file_recs, 'matchers',
 "   Restrict to project. unite-filter-matcher_project_files
 "
 
-if exists('g:loaded_neomru')
+if s:has_neomru
   call unite#custom#source(
     \ 'neomru/file', 'matchers',
     \ ['converter_relative_word', 'matcher_project_files', 'matcher_fuzzy'])
@@ -127,20 +138,22 @@ nnoremap <silent> [unite]o
   \ -winwidth=30
   \ outline<CR>
 
-" recent files
-nnoremap <silent> [unite]r
-  \ :<C-u>Unite -buffer-name=mru
-  \ -input=
-  \ -start-insert
-  \ neomru/file<CR>
+if exists('g:loaded_neomru')
+  " recent files
+  nnoremap <silent> [unite]r
+    \ :<C-u>Unite -buffer-name=mru
+    \ -input=
+    \ -start-insert
+    \ neomru/file<CR>
 
-" recent dirs
-nnoremap <silent> [unite]d
-  \ :<C-u>Unite -buffer-name=mrudirs
-  \ -input=
-  \ -start-insert
-  \ -default-action=cd
-  \ neomru/directory<CR>
+  " recent dirs
+  nnoremap <silent> [unite]d
+    \ :<C-u>Unite -buffer-name=mrudirs
+    \ -input=
+    \ -start-insert
+    \ -default-action=cd
+    \ neomru/directory<CR>
+endif
 
 "
 " Unite Tag Integration:
@@ -159,7 +172,7 @@ autocmd BufEnter *
 "   https://github.com/ggreer/the_silver_searcher
 "
 
-if executable('ag')
+if s:has_ag
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts =
     \ '--nogroup --nocolor --column --ignore vendor --ignore public'
