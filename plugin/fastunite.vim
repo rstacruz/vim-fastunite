@@ -48,7 +48,7 @@ call unite#custom#source('tag', 'sorters', ['sorter_rank'])
 "
 
 let s:file_recs = 'file_rec,file_rec/async'
-if globpath(&rtp, "autoload/unite/sources/tag.vim")
+if globpath(&rtp, "autoload/unite/sources/tag.vim") != ""
   let s:file_recs .= 'tag'
 endif
 
@@ -62,10 +62,19 @@ call unite#custom#source(s:file_recs, 'matchers',
 "   Restrict to project. unite-filter-matcher_project_files
 "
 
-if globpath(&rtp, "plugin/neomru.vim")
+if exists('g:loaded_neomru')
   call unite#custom#source(
     \ 'neomru/file', 'matchers',
-    \ ['matcher_project_files', 'matcher_fuzzy'])
+    \ ['converter_relative_word', 'matcher_project_files', 'matcher_fuzzy'])
+end
+
+"
+" Neomru:
+"   Include recents in ,ug if neomru is available
+"
+let s:file_sources = 'file file_rec/async'
+if exists('g:loaded_neomru')
+  let s:file_sources = 'neomru/file ' . s:file_sources
 end
 
 "
@@ -82,12 +91,13 @@ nmap <leader>u [unite]
 
 " files in project (git)
 nnoremap <silent> [unite]p
-  \ :<C-u>Unite -buffer-name=files
+  \ :<C-u>Unite -buffer-name=project
   \ -resume
   \ -input=
   \ -start-insert
   \ -hide-source-names
-  \ file file_rec/async<CR>
+  \ -unique
+  \ neomru/file file file_rec/async<CR>
 
 " file (manual navigator)
 nnoremap <silent> [unite]f
