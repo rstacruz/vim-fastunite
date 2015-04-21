@@ -7,6 +7,7 @@ endif
 " Feature Detection:
 "
 
+let s:has_outline = globpath(&rtp, "autoload/unite/sources/outline.vim") != ""
 let s:has_neomru = globpath(&rtp, "plugin/neomru.vim") == ""
 let s:has_tag = globpath(&rtp, "autoload/unite/sources/tag.vim") != ""
 let s:has_ag = executable('ag')
@@ -130,15 +131,17 @@ nnoremap <silent> [unite]t
   \ -start-insert
   \ tag<CR>
 
-" outline
-nnoremap <silent> [unite]o
-  \ :<C-u>Unite -buffer-name=outline
-  \ -auto-highlight
-  \ -vertical
-  \ -winwidth=30
-  \ outline<CR>
+if s:has_outline
+  " outline
+  nnoremap <silent> [unite]o
+    \ :<C-u>Unite -buffer-name=outline
+    \ -auto-highlight
+    \ -vertical
+    \ -winwidth=30
+    \ outline<CR>
+endif
 
-if exists('g:loaded_neomru')
+if s:has_neomru
   " recent files
   nnoremap <silent> [unite]r
     \ :<C-u>Unite -buffer-name=mru
