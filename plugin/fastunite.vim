@@ -69,15 +69,6 @@ if exists('g:loaded_neomru')
 end
 
 "
-" Neomru:
-"   Include recents in ,ug if neomru is available
-"
-let s:file_sources = 'file file_rec/async'
-if exists('g:loaded_neomru')
-  let s:file_sources = 'neomru/file ' . s:file_sources
-end
-
-"
 " Prefix Key:
 "   map <leader>u as the unite prefix.
 "
@@ -97,7 +88,7 @@ nnoremap <silent> [unite]p
   \ -start-insert
   \ -hide-source-names
   \ -unique
-  \ neomru/file file file_rec/async<CR>
+  \ file file_rec/async<CR>
 
 " file (manual navigator)
 nnoremap <silent> [unite]f
@@ -139,7 +130,6 @@ nnoremap <silent> [unite]o
 " recent file
 nnoremap <silent> [unite]r
   \ :<C-u>Unite -buffer-name=mru
-  \ -resume
   \ -input=
   \ -start-insert
   \ neomru/file<CR>
