@@ -8,7 +8,7 @@ endif
 "
 
 let s:has_outline = globpath(&rtp, "autoload/unite/sources/outline.vim") != ""
-let s:has_neomru = globpath(&rtp, "plugin/neomru.vim") == ""
+let s:has_neomru = globpath(&rtp, "plugin/neomru.vim") != ""
 let s:has_tag = globpath(&rtp, "autoload/unite/sources/tag.vim") != ""
 let s:has_ag = executable('ag')
 
