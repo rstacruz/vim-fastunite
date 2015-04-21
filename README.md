@@ -1,7 +1,6 @@
 # vim-fastunite
 
-Opinionated distribution of [unite.vim].
-
+**Opinionated distribution of [unite.vim].**<br>
 :construction: **WIP:** Documentation to follow, please bear with us!
 
 <br>
@@ -43,6 +42,19 @@ Also available:
 
 - `,ug` - search in files (grep)
 - `,uo` - outline (requires [unite-outline])
+
+<br>
+
+## Why?
+
+- **Fast searches:** !!<br>
+  Uses `ag` when available for the fastest file finding interface available
+
+- **Cached windows:** !!<br>
+  Unite instances are cached, so pressing `,ut` again will be super-fast
+
+- **Preconfigured matchers:**<br>
+  Matchers were configured and optimized to work with neovim, vim, etc.
 
 <br>
 
