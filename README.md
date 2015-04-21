@@ -1,11 +1,9 @@
 # vim-fastunite
 
 **Opinionated distribution of [unite.vim].**<br>
-:construction: **WIP:** Documentation to follow, please bear with us!
+:construction: Documentation to follow, please bear with us!
 
-<br>
-
-## Install
+## Installation
 
 Use your favorite Vim package manager to install `vim-fastunite` with its dependencies. With [vim-plug]:
 
