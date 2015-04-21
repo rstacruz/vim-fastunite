@@ -4,10 +4,19 @@ if globpath(&rtp, "plugin/unite.vim") == ""
 endif
 
 "
+" Options:
+"
+
+if !exists('g:fastunite_direction')
+  let g:fastunite_direction = 'topleft'
+endif
+
+"
 " Feature Detection:
 "
 
 let s:has_outline = globpath(&rtp, "autoload/unite/sources/outline.vim") != ""
+let s:has_airline = globpath(&rtp, "plugin/airline.vim") != ""
 let s:has_neomru = globpath(&rtp, "plugin/neomru.vim") != ""
 let s:has_tag = globpath(&rtp, "autoload/unite/sources/tag.vim") != ""
 let s:has_ag = executable('ag')
@@ -92,44 +101,39 @@ nmap <leader>u [unite]
 " Key Bindings:
 "
 
-" files in project (git)
-nnoremap <silent> [unite]p
-  \ :<C-u>Unite -buffer-name=project
-  \ -resume
-  \ -input=
-  \ -start-insert
-  \ -hide-source-names
-  \ -unique
-  \ file file_rec/async<CR>
+function! s:unite_map(key1, key2, bufname, opts)
+  let l:dialog = '-direction=' . g:fastunite_direction . ' '
+  let l:here = '-no-split '
+  let l:unite = ':<C-u>Unite -buffer-name=' . a:bufname
 
-" file (manual navigator)
-nnoremap <silent> [unite]f
-  \ :<C-u>Unite -buffer-name=file
-  \ -resume
-  \ -input=
-  \ -start-insert
-  \ -hide-source-names
-  \ file file/new<CR>
+  exe "nnoremap <silent> [unite]" . a:key1 . ' ' . l:unite . ' ' . l:dialog . ' ' . a:opts . '<CR>'
+  exe "nnoremap <silent> [unite]" . a:key2 . ' ' . l:unite . ' ' . l:here   . ' ' . a:opts . '<CR>'
+endfunction
 
-" grep
-nnoremap <silent> [unite]g
-  \ :<C-u>Unite -buffer-name=grep
-  \ -start-insert
-  \ grep:.<CR>
+call s:unite_map('p', 'P', 'project',
+  \ "-resume -input= -start-insert -hide-source-names -unique file file_rec/async")
 
-" buffer
-nnoremap <silent> [unite]b
-  \ :<C-u>Unite -buffer-name=buffers
-  \ -start-insert
-  \ buffer<CR>
+call s:unite_map('f', 'F', 'file',
+  \ "-resume -input= -start-insert -hide-source-names -unique file file/new")
 
-" tags
-nnoremap <silent> [unite]t
-  \ :<C-u>Unite -buffer-name=tag
-  \ -resume
-  \ -input=
-  \ -start-insert
-  \ tag<CR>
+call s:unite_map('g', 'G', 'grep',
+  \ "-start-insert grep:.")
+
+call s:unite_map('b', 'B', 'buffer',
+  \ "-start-insert buffer")
+
+call s:unite_map('t', 'T', 'tag',
+  \ "-resume -input= -start-insert tag")
+
+if s:has_neomru
+  " recent files
+  call s:unite_map('r', 'R', 'mru',
+    \ "-input= -start-insert neomru/file")
+
+  " recent dirs
+  call s:unite_map('d', 'D', 'dirs',
+    \ "-input= -start-insert -default-action=cd neomru/directory")
+endif
 
 if s:has_outline
   " outline
@@ -141,23 +145,6 @@ if s:has_outline
     \ outline<CR>
 endif
 
-if s:has_neomru
-  " recent files
-  nnoremap <silent> [unite]r
-    \ :<C-u>Unite -buffer-name=mru
-    \ -input=
-    \ -start-insert
-    \ neomru/file<CR>
-
-  " recent dirs
-  nnoremap <silent> [unite]d
-    \ :<C-u>Unite -buffer-name=mrudirs
-    \ -input=
-    \ -start-insert
-    \ -default-action=cd
-    \ neomru/directory<CR>
-endif
-
 "
 " Unite Tag Integration:
 "   Use unite-tag instead of ^] for navigating to tags.
@@ -166,7 +153,7 @@ endif
 
 autocmd BufEnter *
 \   if empty(&buftype)
-\|    nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -immediately tag<CR>
+\|    nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -buffer-name=tag -immediately tag<CR>
 \| endif
 
 "
@@ -185,6 +172,7 @@ endif
 "
 " Airline Integration:
 "   simplifies the status line and gets rid of the unnecessary cruft
+"   for airline.vim.
 "
 "   from:
 "     Unite > project > file(25) file_rec/async(31) | directory: /Users/...
@@ -193,17 +181,20 @@ endif
 "     Unite > project
 "
 
-function! airline#extensions#unite#apply(...)
-  if &ft == 'unite'
-    call a:1.add_section('airline_a', ' Unite ')
-    call a:1.add_section('airline_b', ' %{get(unite#get_context(), "buffer_name", "")} ')
-    call a:1.add_section('airline_c', ' ')
-    return 1
-  endif
-endfunction
+if s:has_airline
+  function! airline#extensions#unite#apply(...)
+    if &ft == 'unite'
+      call a:1.add_section('airline_a', ' Unite ')
+      call a:1.add_section('airline_b', ' %{get(unite#get_context(), "buffer_name", "")} ')
+      call a:1.add_section('airline_c', ' ')
+      return 1
+    endif
+  endfunction
+endif
 
 "
-" Loaded hook:
+" Loaded Hook:
+"   allow the user to override some settings with a custom function
 "
 
 if exists('*fastunite#loaded')
