@@ -8,14 +8,16 @@ The fastest way to navigate your files powered by [unite.vim]. Just press `Ctrl-
 
 ## About
 
-vim-fastunite is an optimized and opinionated distribution of [unite.vim], the best Vim file matcher. It's pre-configured to give you a pleasant out-of-the-box experience with Unite.
+vim-fastunite is pre-configured to give you a pleasant out-of-the-box experience with [unite.vim], the best Vim file matcher.
 
 Just install the vim plugins and `ag` — no need for complicated vimrc incantations.
 
- * Fast file indexing
- * No lag when opening Unite
+ * No lags when opening Unite (via resuming)
+ * Fast file indexing (via `ag`)
+ * Smart sorting and fuzzy matching
+ * [...and many more](#features)
 
-**[Documentation →](doc/fastunite.txt)** or [Features →](#features)
+**[Read documentation ›](doc/fastunite.txt)**
 
 <br>
 
