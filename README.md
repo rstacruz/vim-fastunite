@@ -13,7 +13,7 @@ vim-fastunite is an optimized and opinionated distribution of [unite.vim], the b
 Unite is amazing, but very hard to configure. I've done the heavy lifting for you of figuring out the best settings. Here's what you'll get:
 
 - **Batteries included:**<br>
-  Just install the vim plugins needed and `ag`, no need for complicated vimrc incantations.
+  Just install the vim plugins and `ag` — no need for complicated vimrc incantations.
 
 - **Fast indexing:**<br>
   Uses `ag` to index your files. Many orders of magnitude faster than the default.
