@@ -1,8 +1,6 @@
 # vim-fastunite
 
-**Opinionated distribution of [unite.vim].**<br>
-
-## Why?
+:construction: **Opinionated distribution of [unite.vim].**<br>
 
 Unite is amazing but is ridiculously hard to configure. I've done all the heavy lifting for you and came up with a sensible one-size-fits-all package to get you productive on Unite.vim.
 
@@ -15,7 +13,7 @@ Unite is amazing but is ridiculously hard to configure. I've done all the heavy 
 - **Preconfigured matchers:**<br>
   Matchers were configured and optimized to work with neovim, vim, etc.
 
--  :construction: Documentation to follow, please bear with us!
+-  Documentation to follow, please bear with us!
 
 <br>
 
