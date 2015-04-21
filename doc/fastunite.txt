@@ -5,50 +5,66 @@ INTRODUCTION                                                         *fastunite*
 
 Fast integration for unite.vim.
 
-All key bindings start with <Leader>u
+All key bindings start with <Leader>u.
 
 ==============================================================================
 BINDINGS                                                    *fastunite-bindings*
 
-  <Leader>up                                                       *fastunite-p*
+                                                                   *fastunite-p*
+  <Leader>up
+  <Leader>uP
     Search for files in the current project.
+    When the uppercase `P` is used, it unite will spawn the picker in the
+    currently active buffer.
     Compare with |:Unite| `file_rec`.
-        
-  <Leader>ub                                                       *fastunite-b*
+                                                                   *fastunite-b*
+  <Leader>ub
+  <Leader>uB
     Search buffers. Compare with |:Unite| `buffer`.
-        
-  <Leader>ut                                                       *fastunite-t*
+                                                                   *fastunite-t*
+  <Leader>ut
+  <Leader>uT
     Search for tags. Compare with |:Unite| `tag`.
     Requires the |unite-tag|.vim plugin.
-
-  <Leader>ug                                                       *fastunite-g*
+                                                                   *fastunite-g*
+  <Leader>ug
+  <Leader>uG
     Search all files in the project. Compare with |:Unite| `grep`.
-
-  <Leader>uo                                                       *fastunite-o*
+                                                                   *fastunite-o*
+  <Leader>uo
+  <Leader>uO
     Open an outline of the current file. Compare with |:Unite| `outline`.
     Requires the |unite-outline|.vim plugin.
-
-  <Leader>ur                                                       *fastunite-r*
+                                                                   *fastunite-r*
+  <Leader>ur
+  <Leader>uR
     Open a recent file. Compare with |:Unite| `neomru/file`.
     Requires the |neomru|.vim plugin.
 
 ==============================================================================
-OPENING IN THE SAME BUFFER                                   *fastunite-samebuf*
+OPTIONS                                                      *fastunite-options*
 
-Make the letter upper case to open the thing in the same buffer.
-
-  <Leader>up       project files (dialog)
-  <Leader>uP       project files (in this buffer)
+  *g:fastunite_direction*
+    can be `topleft` or `botright`
+    default: `topleft`
 
 ==============================================================================
-CUSTOMIZATION                                          *fastunite-customization*
+ADVANCED CUSTOMIZATION                                 *fastunite-customization*
 
-If there's anything you want to override, put it in a `fastunite#loaded()`
-function.
+Overriding fastunite customizations ~
+
+  If there's anything you want to override, put it in a function
+  called `fastunite#loaded()`.
 >
     function! fastunite#loaded()
       let g:unite_prompt = '  ▸  '
     endfunction
+
+Changing prefixes ~
+
+  You can remap a new prefix using: >
+
+    nmap <leader>U [unite]
 
 ==============================================================================
 vim ft:help

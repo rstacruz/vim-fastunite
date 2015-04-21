@@ -200,3 +200,20 @@ endif
 if exists('*fastunite#loaded')
   call fastunite#loaded()
 endif
+
+
+"
+" Buffer Keys:
+"   custom mappings for the unite buffer.
+"   http://www.codeography.com/2013/06/17/replacing-all-the-things-with-unite-vim.html
+"
+
+autocmd FileType unite call s:unite_settings()
+function! s:unite_settings()
+  " Play nice with supertab
+  let b:SuperTabDisabled=1
+
+  " Enable navigation with control-j and control-k in insert mode
+  imap <buffer> <C-j>   <Plug>(unite_select_next_line)
+  imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+endfunction

@@ -49,6 +49,8 @@ apt-get install silversearcher-ag  # Ubuntu
 yum install the_silver_searcher    # Fedora
 ```
 
+Now press `,up` in your big project.
+
 <br>
 
 ## Usage
@@ -62,6 +64,26 @@ Also available:
 
 - `,ug` - search in files (grep)
 - `,uo` - outline (requires [unite-outline])
+
+<br>
+
+## But really, why?
+
+So you've probably tried adding a few lines to your vimrc to get Unite running. There are many other things this plugin does to make the Unite experience more seamless, including:
+
+* Faster file search: If `ag` is available, it's used for `file_rec`. 
+
+* Mercurial support: by using `ag`, .hgignore and .bzrignore are supported.
+
+* Use better sorting: If ruby is available in your Vim build, a better sorting method will be selected for you
+
+* Mappings: all the useful key mappings are set up for you
+
+* Airline: improves integration with airline
+
+* Faster grepping: `ag` will be used for grepping if it's available
+
+* And many more
 
 <br>
 
