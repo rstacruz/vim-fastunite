@@ -61,7 +61,7 @@ call unite#custom#source('tag', 'sorters', ['sorter_rank'])
 
 let s:file_recs = 'file_rec,file_rec/async'
 if s:has_tag
-  let s:file_recs .= 'tag'
+  let s:file_recs .= ',tag'
 endif
 
 let s:sorter = has("ruby") ? 'sorter_selecta' : 'sorter_rank'
