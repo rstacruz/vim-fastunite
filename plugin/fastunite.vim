@@ -127,12 +127,20 @@ nnoremap <silent> [unite]o
   \ -winwidth=30
   \ outline<CR>
 
-" recent file
+" recent files
 nnoremap <silent> [unite]r
   \ :<C-u>Unite -buffer-name=mru
   \ -input=
   \ -start-insert
   \ neomru/file<CR>
+
+" recent dirs
+nnoremap <silent> [unite]d
+  \ :<C-u>Unite -buffer-name=mrudirs
+  \ -input=
+  \ -start-insert
+  \ -default-action=cd
+  \ neomru/directory<CR>
 
 "
 " Unite Tag Integration:
