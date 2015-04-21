@@ -1,15 +1,34 @@
 # vim-fastunite
 
 **Opinionated distribution of [unite.vim].**<br>
-:construction: Documentation to follow, please bear with us!
+
+## Why?
+
+Unite is amazing but is ridiculously hard to configure. I've done all the heavy lifting for you and came up with a sensible one-size-fits-all package to get you productive on Unite.vim.
+
+- **Fast searches:** !!<br>
+  Uses `ag` when available for the fastest file finding interface available
+
+- **Cached windows:** !!<br>
+  Unite instances are cached, so pressing `,ut` again will be super-fast
+
+- **Preconfigured matchers:**<br>
+  Matchers were configured and optimized to work with neovim, vim, etc.
+
+-  :construction: Documentation to follow, please bear with us!
+
+<br>
 
 ## Installation
 
 Use your favorite Vim package manager to install `vim-fastunite` with its dependencies. With [vim-plug]:
 
 ```vim
+" required
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Shougo/unite.vim'
+
+" optional, but recommended
 Plug 'tsukkee/unite-tag'
 Plug 'Shougo/unite-outline'
 
@@ -42,19 +61,6 @@ Also available:
 
 - `,ug` - search in files (grep)
 - `,uo` - outline (requires [unite-outline])
-
-<br>
-
-## Why?
-
-- **Fast searches:** !!<br>
-  Uses `ag` when available for the fastest file finding interface available
-
-- **Cached windows:** !!<br>
-  Unite instances are cached, so pressing `,ut` again will be super-fast
-
-- **Preconfigured matchers:**<br>
-  Matchers were configured and optimized to work with neovim, vim, etc.
 
 <br>
 
