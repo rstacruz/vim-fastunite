@@ -182,6 +182,30 @@ if s:has_ag
   let g:unite_source_grep_recursive_opt = ''
 endif
 
+"
+" Airline Integration:
+"   simplifies the status line and gets rid of the unnecessary cruft
+"
+"   from:
+"     Unite > project > file(25) file_rec/async(31) | directory: /Users/...
+"
+"   to:
+"     Unite > project
+"
+
+function! airline#extensions#unite#apply(...)
+  if &ft == 'unite'
+    call a:1.add_section('airline_a', ' Unite ')
+    call a:1.add_section('airline_b', ' %{get(unite#get_context(), "buffer_name", "")} ')
+    call a:1.add_section('airline_c', ' ')
+    return 1
+  endif
+endfunction
+
+"
+" Loaded hook:
+"
+
 if exists('*fastunite#loaded')
   call fastunite#loaded()
 endif
