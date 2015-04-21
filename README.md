@@ -56,13 +56,13 @@ Now press `<Ctrl-p>` in your big project.
 
 All keys are prefixed with `<Leader>u` by default (referred to as `[unite]`). Assuming your leader key is `,` that's:
 
-| Key      | Description                            |
-| ---      | ---                                    |
-| `,u` `p` | search for files in the project        |
-| `,u` `g` | search in files (grep)                 |
-| `,u` `t` | search for tags (requires [unite-tag]) |
-| `,u` `c` | show recent files (require ([neomru])  |
-| `,u` `o` | outline (requires [unite-outline])     |
+| Key      | Description                                             |
+| ---      | ---                                                     |
+| `,u` `p` | **Project:** search for files in the project            |
+| `,u` `g` | **Grep:** search in files (grep)                        |
+| `,u` `t` | **Tags:** search for tags (requires [unite-tag])        |
+| `,u` `r` | **Recent:** show recent files (require ([neomru])       |
+| `,u` `o` | **Outline:** outline sidebar (requires [unite-outline]) |
 
 **[Documentation →](doc/fastunite.txt)**
 
