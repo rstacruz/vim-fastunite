@@ -2,9 +2,7 @@
 
 The fastest way to navigate your files powered by [unite.vim]. Just press `Ctrl-P`. No lags.
 
-![](http://ricostacruz.com/vim-fastunite/screencast.gif)
-
-<br>
+<img src='http://ricostacruz.com/vim-fastunite/screencast.gif'>
 
 ## About
 
