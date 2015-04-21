@@ -47,11 +47,26 @@ call unite#custom#source('tag', 'sorters', ['sorter_rank'])
 "   also, neovim doesn't have ruby so... no selecta
 "
 
-let s:file_recs = 'file_rec,file_rec/async,tag,neomru/file,neomru/directory'
+let s:file_recs = 'file_rec,file_rec/async'
+if globpath(&rtp, "autoload/unite/sources/tag.vim")
+  let s:file_recs .= 'tag'
+endif
+
 let s:sorter = has("ruby") ? 'sorter_selecta' : 'sorter_rank'
 call unite#custom#source(s:file_recs, 'sorters', [s:sorter])
 call unite#custom#source(s:file_recs, 'matchers',
   \ ['converter_relative_word', 'matcher_fuzzy'])
+
+"
+" Neomru:
+"   Restrict to project. unite-filter-matcher_project_files
+"
+
+if globpath(&rtp, "plugin/neomru.vim")
+  call unite#custom#source(
+    \ 'neomru/file', 'matchers',
+    \ ['matcher_project_files', 'matcher_fuzzy'])
+end
 
 "
 " Prefix Key:
