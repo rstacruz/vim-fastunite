@@ -30,6 +30,7 @@ Plug 'Shougo/unite.vim'
 
 " optional, but recommended
 Plug 'tsukkee/unite-tag'
+Plug 'Shougo/neomru.vim'
 Plug 'Shougo/unite-outline'
 
 Plug 'rstacruz/vim-fastunite'
