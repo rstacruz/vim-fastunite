@@ -11,33 +11,33 @@ All key bindings start with <Leader>u.
 BINDINGS                                                    *fastunite-bindings*
 
                                                                    *fastunite-p*
-  <Leader>up
-  <Leader>uP
+  <Leader>u p
+  <Leader>u P
     Search for files in the current project.
     When the uppercase `P` is used, it unite will spawn the picker in the
     currently active buffer.
     Compare with |:Unite| `file_rec`.
                                                                    *fastunite-b*
-  <Leader>ub
-  <Leader>uB
+  <Leader>u b
+  <Leader>u B
     Search buffers. Compare with |:Unite| `buffer`.
                                                                    *fastunite-t*
-  <Leader>ut
-  <Leader>uT
+  <Leader>u t
+  <Leader>u T
     Search for tags. Compare with |:Unite| `tag`.
     Requires the |unite-tag|.vim plugin.
                                                                    *fastunite-g*
-  <Leader>ug
-  <Leader>uG
+  <Leader>u g
+  <Leader>u G
     Search all files in the project. Compare with |:Unite| `grep`.
                                                                    *fastunite-o*
-  <Leader>uo
-  <Leader>uO
+  <Leader>u o
+  <Leader>u O
     Open an outline of the current file. Compare with |:Unite| `outline`.
     Requires the |unite-outline|.vim plugin.
                                                                    *fastunite-r*
-  <Leader>ur
-  <Leader>uR
+  <Leader>u r
+  <Leader>u R
     Open a recent file. Compare with |:Unite| `neomru/file`.
     Requires the |neomru|.vim plugin.
 

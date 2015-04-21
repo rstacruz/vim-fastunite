@@ -56,7 +56,7 @@ yum install the_silver_searcher    # Fedora
 
 Now press `<Ctrl-p>` in your big project.
 
-*Only the first 3 lines are required; the other lines are optional but recommended.*
+*Only the first 3 vimrc lines are required; the other plugins are optional but recommended.*
 
 <br>
 
