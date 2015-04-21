@@ -8,7 +8,7 @@ Unite is amazing but is ridiculously hard to configure. I've done all the heavy 
   Uses `ag` when available for the fastest file finding interface available
 
 - **Cached windows:** !!<br>
-  Unite instances are cached, so pressing `,ut` again will be super-fast
+  Unite instances are cached, so pressing `,up` again will be super-fast
 
 - **Preconfigured matchers:**<br>
   Matchers were configured and optimized to work with neovim, vim, etc.
