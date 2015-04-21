@@ -14,7 +14,9 @@ Plug 'tsukkee/unite-tag'
 Plug 'Shougo/unite-outline'
 
 Plug 'rstacruz/vim-fastunite'
+```
 
+```vim
 " recommended: bind Ctrl-P
 map <C-p> [unite]p
 ```
