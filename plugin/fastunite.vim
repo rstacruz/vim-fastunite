@@ -201,7 +201,6 @@ if exists('*fastunite#loaded')
   call fastunite#loaded()
 endif
 
-
 "
 " Buffer Keys:
 "   custom mappings for the unite buffer.
