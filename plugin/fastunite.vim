@@ -47,7 +47,7 @@ call unite#custom#source('tag', 'sorters', ['sorter_rank'])
 "   also, neovim doesn't have ruby so... no selecta
 "
 
-let s:file_recs = 'file_rec,file_rec/async,tag'
+let s:file_recs = 'file_rec,file_rec/async,tag,neomru/file,neomru/directory'
 let s:sorter = has("ruby") ? 'sorter_selecta' : 'sorter_rank'
 call unite#custom#source(s:file_recs, 'sorters', [s:sorter])
 call unite#custom#source(s:file_recs, 'matchers',
@@ -105,11 +105,19 @@ nnoremap <silent> [unite]t
 
 " outline
 nnoremap <silent> [unite]o
-  \ :<C-u>Unite
+  \ :<C-u>Unite -buffer-name=outline
   \ -auto-highlight
   \ -vertical
   \ -winwidth=30
   \ outline<CR>
+
+" recent file
+nnoremap <silent> [unite]r
+  \ :<C-u>Unite -buffer-name=mru
+  \ -resume
+  \ -input=
+  \ -start-insert
+  \ neomru/file<CR>
 
 "
 " Unite Tag Integration:

@@ -5,23 +5,27 @@ INTRODUCTION                                                         *fastunite*
 
 Fast integration for unite.vim.
 
-  <Leader>p                                                        *fastunite-p*
+  <Leader>up                                                       *fastunite-p*
     Search for files in the current project.
     Compare with |:Unite| `file_rec`.
         
-  <Leader>t                                                        *fastunite-t*
+  <Leader>ut                                                       *fastunite-t*
     Search for tags. Compare with |:Unite| `tag`.
     Requires the |unite-tag|.vim plugin.
         
-  <Leader>b                                                        *fastunite-b*
+  <Leader>ub                                                       *fastunite-b*
     Search buffers. Compare with |:Unite| `buffer`.
 
-  <Leader>g                                                        *fastunite-g*
+  <Leader>ug                                                       *fastunite-g*
     Search all files in the project. Compare with |:Unite| `grep`.
 
-  <Leader>o                                                        *fastunite-o*
+  <Leader>uo                                                       *fastunite-o*
     Open an outline of the current file. Compare with |:Unite| `outline`.
     Requires the |unite-outline|.vim plugin.
+
+  <Leader>ur                                                       *fastunite-r*
+    Open a recent file. Compare with |:Unite| `neomru/file`.
+    Requires the |neomru|.vim plugin.
 
 ==============================================================================
 CUSTOMIZATION                                          *fastunite-customization*
