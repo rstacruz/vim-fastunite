@@ -10,22 +10,12 @@ The fastest way to navigate your files powered by [unite.vim]. Just press `Ctrl-
 
 vim-fastunite is an optimized and opinionated distribution of [unite.vim], the best Vim file matcher. It's pre-configured to give you a pleasant out-of-the-box experience with Unite.
 
-Unite is amazing, but very hard to configure. I've done the heavy lifting for you of figuring out the best settings. Here's what you'll get:
+Just install the vim plugins and `ag` — no need for complicated vimrc incantations.
 
-- **Batteries included:**<br>
-  Just install the vim plugins and `ag` — no need for complicated vimrc incantations.
+ * Fast file indexing
+ * No lag when opening Unite
 
-- **Fast indexing:**<br>
-  Uses `ag` to index your files. Many orders of magnitude faster than the default.
-
-- **Cached windows:**<br>
-  Invoking Unite after the first time is instantaneous.  Unite sessions are
-  cached, so pressing `,up` again will resume the previous session.
-
-- **Preconfigured matchers:**<br>
-  Fuzzy matching, smart sorting... maximum productivity.
-
-**[Documentation →](doc/fastunite.txt)**
+**[Documentation →](doc/fastunite.txt)** or [Features →](#features)
 
 <br>
 
@@ -78,11 +68,13 @@ All keys are prefixed with `<Leader>u` by default (referred to as `[unite]`). As
 
 <br>
 
-## But really, why?
+## Features
 
 So you've probably tried Unite before. You added a few lines to your vimrc to get Unite running. If you're like me, you probably used it a few times and forgot about it because it was slow.
 
 This plugin is a bag of many tweaks to make the Unite experience more seamless. Here are a few:
+
+* *Unite resuming:* invoking unite after the first time will resume the previous unite session, making it fast.
 
 * *Faster file search:* If `ag` is available, it's used for `file_rec`. 
 
@@ -97,6 +89,8 @@ This plugin is a bag of many tweaks to make the Unite experience more seamless. 
 * *Faster grepping:* `ag` will be used for grepping if it's available.
 
 * *Better unite-tag integration:* if `unite-tag` is installed, it will be used as the tag browser when pressing `^]`.
+
+* *Preconfigured matchers:* fuzzy matching and smart sorting is enabled by default.
 
 * And many more.
 
