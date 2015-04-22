@@ -111,10 +111,10 @@ function! s:unite_map(key1, key2, bufname, opts)
 endfunction
 
 call s:unite_map('p', 'P', 'project',
-  \ "-resume -input= -start-insert -hide-source-names -unique file file_rec/async")
+  \ "-resume -no-restore -input= -start-insert -hide-source-names -unique file file_rec/async")
 
 call s:unite_map('f', 'F', 'file',
-  \ "-resume -input= -start-insert -hide-source-names -unique file file/new")
+  \ "-resume -no-restore -input= -start-insert -hide-source-names -unique file file/new")
 
 call s:unite_map('g', 'G', 'grep',
   \ "-start-insert grep:.")
@@ -123,7 +123,10 @@ call s:unite_map('b', 'B', 'buffer',
   \ "-start-insert buffer")
 
 call s:unite_map('t', 'T', 'tag',
-  \ "-resume -input= -start-insert tag")
+  \ "-start-insert tag")
+
+  " screws up
+  " -resume -no-restore -input= -start-insert tag
 
 if s:has_neomru
   " recent files
