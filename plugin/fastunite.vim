@@ -98,6 +98,32 @@ nnoremap [unite] <Nop>
 nmap <leader>u [unite]
 
 "
+" Source Profiles:
+"
+
+call unite#custom#profile('source/grep', 'context', {
+  \ 'no_quit' : 1
+  \ })
+
+call unite#custom#profile('source/buffer', 'context', {
+  \ 'start_insert' : 1
+  \ })
+
+" -resume is not a good fit here
+call unite#custom#profile('source/tag', 'context', {
+  \ 'start_insert' : 1
+  \ })
+
+call unite#custom#profile('source/neomru/file', 'context', {
+  \ 'start_insert' : 1
+  \ })
+
+call unite#custom#profile('source/neomru/directory', 'context', {
+  \ 'start_insert' : 1,
+  \ 'default_action' : 'cd'
+  \ })
+
+"
 " Key Bindings:
 "
 
@@ -116,26 +142,13 @@ call s:unite_map('p', 'P', 'project',
 call s:unite_map('f', 'F', 'file',
   \ "-resume -no-restore -input= -start-insert -hide-source-names -unique file file/new")
 
-call s:unite_map('g', 'G', 'grep',
-  \ "-start-insert grep:.")
-
-call s:unite_map('b', 'B', 'buffer',
-  \ "-start-insert buffer")
-
-call s:unite_map('t', 'T', 'tag',
-  \ "-start-insert tag")
-
-  " screws up
-  " -resume -no-restore -input= -start-insert tag
+call s:unite_map('g', 'G', 'grep', "grep:.")
+call s:unite_map('b', 'B', 'buffer', "buffer")
+call s:unite_map('t', 'T', 'tag', "tag")
 
 if s:has_neomru
-  " recent files
-  call s:unite_map('r', 'R', 'mru',
-    \ "-input= -start-insert neomru/file")
-
-  " recent dirs
-  call s:unite_map('d', 'D', 'dirs',
-    \ "-input= -start-insert -default-action=cd neomru/directory")
+  call s:unite_map('r', 'R', 'mru', "neomru/file")
+  call s:unite_map('d', 'D', 'dirs', "neomru/directory")
 endif
 
 if s:has_outline
