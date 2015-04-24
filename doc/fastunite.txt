@@ -28,8 +28,9 @@ BINDINGS                                                    *fastunite-bindings*
     Requires the |unite-tag|.vim plugin.
                                                                    *fastunite-g*
   <Leader>u g
-  <Leader>u G
     Search all files in the project. Compare with |:Unite| `grep`.
+  <Leader>u G
+    Re-opens the previous grep buffer.
                                                                    *fastunite-o*
   <Leader>u o
   <Leader>u O

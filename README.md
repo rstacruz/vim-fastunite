@@ -66,6 +66,13 @@ All keys are prefixed with `<Leader>u` by default (referred to as `[unite]`). As
 
 **[Documentation →](doc/fastunite.txt)**
 
+From within the Unite window, you can press these in normal mode: (see `:help unite_default_key_mappings`)
+
+| Key      | Description                                             |
+| ---      | ---                                                     |
+| `Ctrl-l` | refresh (show new files) |
+| `Ctrl-r` | restart unite (useful for fixing glitches) |
+
 <br>
 
 ## Features
