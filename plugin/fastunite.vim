@@ -245,6 +245,14 @@ function! s:unite_settings()
   " Enable navigation with control-j and control-k in insert mode
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+
+  " Restart for glitches
+  imap <buffer> <C-r>   <Plug>(unite_restart)
+
+  " Tab to drill-down (app <tab> ass <tab> sty <tab>)
+  " remap old tab to C-z
+  imap <buffer> <Tab>   <C-e>
+  imap <buffer> <C-z>   <Plug>(unite_choose_action)
 endfunction
 
 "
