@@ -102,6 +102,10 @@ nmap <leader>u [unite]
 "   see :h unite-options
 "
 
+call unite#custom#profile('default', 'context', {
+  \ 'direction' : g:fastunite_direction
+  \ })
+
 call unite#custom#profile('source/grep', 'context', {
   \ 'buffer_name' : 'grep',
   \ })
@@ -134,11 +138,10 @@ call unite#custom#profile('source/neomru/directory', 'context', {
 "
 
 function! s:unite_map(key1, key2, opts)
-  let l:dialog = '-direction=' . g:fastunite_direction . ' '
   let l:here = '-no-split '
   let l:unite = ':<C-u>Unite '
 
-  exe "nnoremap <silent> [unite]" . a:key1 . ' ' . l:unite . ' ' . l:dialog . ' ' . a:opts . '<CR>'
+  exe "nnoremap <silent> [unite]" . a:key1 . ' ' . l:unite . ' ' . a:opts . '<CR>'
   exe "nnoremap <silent> [unite]" . a:key2 . ' ' . l:unite . ' ' . l:here   . ' ' . a:opts . '<CR>'
 endfunction
 
