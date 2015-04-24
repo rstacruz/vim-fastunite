@@ -67,7 +67,7 @@ call unite#custom#source('tag', 'sorters', ['sorter_rank'])
 "   also, neovim doesn't have ruby so... no selecta
 "
 
-let s:file_recs = 'file_rec,file_rec/async'
+let s:file_recs = 'file,directory,file_rec,file_rec/async'
 if s:has_tag
   let s:file_recs .= ',tag'
 endif
@@ -146,7 +146,7 @@ function! s:unite_map(key1, key2, opts)
 endfunction
 
 call s:unite_map('p', 'P',
-  \ "-resume -buffer-name=project -no-restore -input= -start-insert -hide-source-names -unique file file_rec/async")
+  \ "-resume -buffer-name=project -no-restore -input= -start-insert -hide-source-names -unique file directory file_rec/async")
 
 call s:unite_map('f', 'F',
   \ "-resume -buffer-name=file    -no-restore -input= -start-insert -hide-source-names -unique file file/new")
