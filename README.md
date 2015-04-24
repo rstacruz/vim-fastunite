@@ -66,13 +66,6 @@ All keys are prefixed with `<Leader>u` by default (referred to as `[unite]`). As
 
 **[Documentation →](doc/fastunite.txt)**
 
-From within the Unite window, you can press these in normal mode: (see `:help unite_default_key_mappings`)
-
-| Key      | Description                                             |
-| ---      | ---                                                     |
-| `Ctrl-l` | refresh (show new files) |
-| `Ctrl-r` | restart unite (useful for fixing glitches) |
-
 <br>
 
 ## Features
@@ -100,6 +93,21 @@ This plugin is a bag of many tweaks to make the Unite experience more seamless. 
 * *Preconfigured matchers:* fuzzy matching and smart sorting is enabled by default.
 
 * And many more.
+
+<br>
+
+## Tips and tricks
+
+
+* *Refreshing files:* the window is cached, so new files won't show up. Press `ctrl-l` in Unite.
+
+* *Fixing Unite glitches:* press `ctrl-r` to restart Unite.
+
+* *Navigating:* after opening `,up`, you can navigate directories with
+`ctrl-e`. press `ctrl-g` to leave a directory. eg: `app` `ctrl-e` `ass`
+`ctrl-e` `styl` `ctrl-e` will navigate to app/assets/stylesheets, letting you
+create a file in that directory.
+
 
 [unite.vim]: https://github.com/Shougo/unite.vim
 [vim-plug]: https://github.com/junegunn/vim-plug
