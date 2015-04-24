@@ -59,10 +59,17 @@ All keys are prefixed with `<Leader>u` by default (referred to as `[unite]`). As
 | Key      | Description                                             |
 | ---      | ---                                                     |
 | `,u` `p` | **Project:** search for files in the project            |
-| `,u` `g` | **Grep:** search in files (grep)                        |
 | `,u` `t` | **Tags:** search for tags (requires [unite-tag])        |
 | `,u` `r` | **Recent:** show recent files (require ([neomru])       |
 | `,u` `o` | **Outline:** outline sidebar (requires [unite-outline]) |
+
+For grepping:
+
+| Key      | Description                  |
+| ---      | ---                          |
+| `,g` `g` | **Grep:** search in files    |
+| `,g` `]` | search current word in files |
+| `,g` `G` | Show last grep window        |
 
 **[Documentation →](doc/fastunite.txt)**
 
