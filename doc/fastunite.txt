@@ -45,9 +45,15 @@ BINDINGS                                                    *fastunite-bindings*
 ==============================================================================
 OPTIONS                                                      *fastunite-options*
 
-  *g:fastunite_direction*
-    can be `topleft` or `botright`
-    default: `topleft`
+  *g:fastunite_default_options*
+    Default options for unite. This allows you to set default options whenever
+    unite commands are invoked either though the mappings or `:Unite file`. See
+    |unite-options| for available options.
+    default: `{}`
+>
+      let g:fastunite_default_options = {
+        \ 'direction' : 'botright'
+      }
 
 ==============================================================================
 ADVANCED CUSTOMIZATION                                 *fastunite-customization*

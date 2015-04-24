@@ -7,8 +7,8 @@ endif
 " Options:
 "
 
-if !exists('g:fastunite_direction')
-  let g:fastunite_direction = 'topleft'
+if !exists('g:fastunite_default_options')
+  let g:fastunite_default_options = { }
 endif
 
 "
@@ -27,7 +27,6 @@ let s:has_ag = executable('ag')
 "
 
 let g:unite_data_directory = expand("~/.cache/unite")
-let g:unite_prompt = '  →  '
 
 if s:has_tag
   let g:unite_source_tag_max_fname_length = 70
@@ -102,9 +101,10 @@ nmap <leader>u [unite]
 "   see :h unite-options
 "
 
-call unite#custom#profile('default', 'context', {
-  \ 'direction' : g:fastunite_direction
-  \ })
+call unite#custom#profile('default', 'context', extend({
+  \ 'direction' : 'topleft',
+  \ 'prompt' : '  →  '
+  \ }, g:fastunite_default_options))
 
 call unite#custom#profile('source/grep', 'context', {
   \ 'buffer_name' : 'grep',
@@ -243,3 +243,9 @@ function! s:unite_settings()
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
 endfunction
+
+"
+" Input Prompt Style:
+"   Usually set to 'normal', which is silly
+"
+hi link uniteInputPrompt Special
