@@ -146,16 +146,16 @@ function! s:unite_map(key1, key2, opts)
 endfunction
 
 call s:unite_map('p', 'P',
-  \ "-resume -no-restore -input= -start-insert -hide-source-names -unique file file_rec/async")
+  \ "-resume -buffer-name=project -no-restore -input= -start-insert -hide-source-names -unique file file_rec/async")
 
 call s:unite_map('f', 'F',
-  \ "-resume -no-restore -input= -start-insert -hide-source-names -unique file file/new")
+  \ "-resume -buffer-name=file    -no-restore -input= -start-insert -hide-source-names -unique file file/new")
 
 nnoremap <silent> [unite]g :<C-u>Unite grep:.<CR>
 nnoremap <silent> [unite]G :<C-u>UniteResume grep<CR>
 
 call s:unite_map('b', 'B', "buffer")
-call s:unite_map('t', 'T', "tag")
+call s:unite_map('t', 'T', "-input= tag")
 
 if s:has_neomru
   call s:unite_map('r', 'R', "neomru/file")
