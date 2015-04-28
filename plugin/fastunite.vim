@@ -110,6 +110,7 @@ call unite#custom#profile('default', 'context', extend({
 
 call unite#custom#profile('source/grep', 'context', {
   \ 'buffer_name' : 'grep',
+  \ 'no_quit' : 1
   \ })
 
 call unite#custom#profile('source/buffer', 'context', {
@@ -156,6 +157,12 @@ call s:unite_map('f', 'F',
 nnoremap <silent> [ugrep]g :<C-u>UniteWithInput grep:.<CR>
 nnoremap <silent> [ugrep]] :<C-u>UniteWithCursorWord -no-start-insert grep:.<CR>
 nnoremap <silent> [ugrep]G :<C-u>UniteResume grep<CR>
+nnoremap <silent> [unite]] :<C-u>call <SID>NavigateTo()<CR>
+
+function! s:NavigateTo()
+  let l:word = expand('<cword>')
+  exe 'Unite tag grep:. -input=' . l:word
+endfunction
 
 call s:unite_map('b', 'B', "buffer")
 call s:unite_map('t', 'T', "-input= tag")
@@ -195,7 +202,7 @@ autocmd BufEnter *
 if s:has_ag
   let g:unite_source_grep_command = 'ag'
   let g:unite_source_grep_default_opts =
-    \ '--nogroup --nocolor --column --ignore vendor --ignore public'
+    \ '--nogroup --nocolor --column'
   let g:unite_source_grep_recursive_opt = ''
 endif
 
