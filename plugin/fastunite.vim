@@ -161,7 +161,7 @@ nnoremap <silent> [unite]] :<C-u>call <SID>NavigateTo()<CR>
 
 function! s:NavigateTo()
   let l:word = expand('<cword>')
-  exe 'Unite tag grep:. -input=' . l:word
+  exe 'Unite tag grep:. -buffer-name=navigate -input=' . l:word
 endfunction
 
 call s:unite_map('b', 'B', "buffer")

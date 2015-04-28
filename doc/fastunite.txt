@@ -43,6 +43,18 @@ BINDINGS                                                    *fastunite-bindings*
     Requires the |neomru|.vim plugin.
 
 ==============================================================================
+EXPERIMENTAL BINDINGS                                   *fastunite-experimental*
+
+  <Leader>g g
+    Grep
+
+  <Leader>g ]
+    Grep the word under the cursor
+
+  <Leader>g G
+    re-open last grep window
+
+==============================================================================
 OPTIONS                                                      *fastunite-options*
 
   *g:fastunite_default_options*
