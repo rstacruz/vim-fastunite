@@ -94,9 +94,7 @@ end
 "
 
 nnoremap [unite] <Nop>
-nnoremap [ugrep] <Nop>
 nmap <leader>u [unite]
-nmap <leader>g [ugrep]
 
 "
 " Source Profiles:
@@ -154,9 +152,9 @@ call s:unite_map('p', 'P',
 call s:unite_map('f', 'F',
   \ "-resume -buffer-name=file    -no-restore -input= -start-insert -hide-source-names -unique file file/new")
 
-nnoremap <silent> [ugrep]g :<C-u>UniteWithInput grep:.<CR>
-nnoremap <silent> [ugrep]] :<C-u>UniteWithCursorWord -no-start-insert grep:.<CR>
-nnoremap <silent> [ugrep]G :<C-u>UniteResume grep<CR>
+nnoremap <silent> [unite]g :<C-u>UniteWithInput grep:.<CR>
+nnoremap <silent> [unite]] :<C-u>UniteWithCursorWord -no-start-insert grep:.<CR>
+nnoremap <silent> [unite]G :<C-u>UniteResume grep<CR>
 
 call s:unite_map('b', 'B', "buffer")
 call s:unite_map('t', 'T', "-input= tag")

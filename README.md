@@ -67,9 +67,9 @@ For grepping:
 
 | Key      | Description                  |
 | ---      | ---                          |
-| `,g` `g` | **Grep:** search in files    |
-| `,g` `]` | search current word in files |
-| `,g` `G` | Show last grep window        |
+| `,u` `g` | **Grep:** search in files    |
+| `,u` `]` | search current word in files |
+| `,u` `G` | Show last grep window        |
 
 **[Documentation →](doc/fastunite.txt)**
 
