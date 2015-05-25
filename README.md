@@ -65,11 +65,11 @@ All keys are prefixed with `<Leader>u` by default (referred to as `[unite]`). As
 
 For grepping:
 
-| Key      | Description                  |
-| ---      | ---                          |
-| `,u` `g` | **Grep:** search in files    |
-| `,u` `]` | search current word in files |
-| `,u` `G` | Show last grep window        |
+| Key      | Description                      |
+| ---      | ---                              |
+| `,u` `g` | **Grep:** search in files        |
+| `,u` `]` | search current word under cursor |
+| `,u` `G` | Show last grep window            |
 
 **[Documentation →](doc/fastunite.txt)**
 
