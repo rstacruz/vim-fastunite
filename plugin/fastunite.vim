@@ -108,6 +108,7 @@ call unite#custom#profile('default', 'context', extend({
 
 call unite#custom#profile('source/grep', 'context', {
   \ 'buffer_name' : 'grep',
+  \ 'no_quit' : 0
   \ })
 
 call unite#custom#profile('source/buffer', 'context', {
@@ -151,7 +152,8 @@ call s:unite_map('p', 'P',
 call s:unite_map('f', 'F',
   \ "-resume -buffer-name=file    -no-restore -input= -start-insert -hide-source-names -unique file file/new")
 
-nnoremap <silent> [unite]g :<C-u>Unite grep:.<CR>
+nnoremap <silent> [unite]g :<C-u>UniteWithInput grep:.<CR>
+nnoremap <silent> [unite]] :<C-u>UniteWithCursorWord -no-start-insert grep:.<CR>
 nnoremap <silent> [unite]G :<C-u>UniteResume grep<CR>
 
 call s:unite_map('b', 'B', "buffer")
@@ -173,6 +175,16 @@ if s:has_outline
 endif
 
 "
+" Uhhh just trying this out
+"
+
+nnoremap <silent> [unite]] :<C-u>call <SID>NavigateTo()<CR>
+function! s:NavigateTo()
+  let l:word = expand('<cword>')
+  exe 'Unite tag grep:. -buffer-name=navigate -input=' . l:word
+endfunction
+
+"
 " Unite Tag Integration:
 "   Use unite-tag instead of ^] for navigating to tags.
 "   :help unite-tag-customize
@@ -180,7 +192,7 @@ endif
 
 autocmd BufEnter *
 \   if empty(&buftype)
-\|    nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -buffer-name=tag -immediately tag<CR>
+\|    nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -buffer-name=tag -no-start-insert -immediately tag<CR>
 \| endif
 
 "
@@ -191,8 +203,7 @@ autocmd BufEnter *
 
 if s:has_ag
   let g:unite_source_grep_command = 'ag'
-  let g:unite_source_grep_default_opts =
-    \ '--nogroup --nocolor --column --ignore vendor --ignore public'
+  let g:unite_source_grep_default_opts = '--vimgrep'
   let g:unite_source_grep_recursive_opt = ''
 endif
 
@@ -242,6 +253,14 @@ function! s:unite_settings()
   " Enable navigation with control-j and control-k in insert mode
   imap <buffer> <C-j>   <Plug>(unite_select_next_line)
   imap <buffer> <C-k>   <Plug>(unite_select_previous_line)
+
+  " Restart for glitches
+  imap <buffer> <C-r>   <Plug>(unite_restart)
+
+  " Tab to drill-down (app <tab> ass <tab> sty <tab>)
+  " remap old tab to C-z
+  imap <buffer> <Tab>   <C-e>
+  imap <buffer> <C-z>   <Plug>(unite_choose_action)
 endfunction
 
 "
