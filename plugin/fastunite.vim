@@ -32,6 +32,15 @@ if s:has_tag
   let g:unite_source_tag_max_fname_length = 70
 endif
 
+let g:unite_prompt = '  →  '
+
+"
+" Loaded Hook:
+"   allow the user to override some settings with a custom function
+"
+
+silent! call fastunite#loaded()
+
 "
 " Unite Marks:
 "   show file marks (eg, `mA`) in unite-mark.vim, if it's available.
@@ -103,7 +112,7 @@ nmap <leader>u [unite]
 
 call unite#custom#profile('default', 'context', extend({
   \ 'direction' : 'topleft',
-  \ 'prompt' : '  →  '
+  \ 'prompt' : unite_prompt,
   \ }, g:fastunite_default_options))
 
 call unite#custom#profile('source/grep', 'context', {
@@ -228,15 +237,6 @@ if s:has_airline
       return 1
     endif
   endfunction
-endif
-
-"
-" Loaded Hook:
-"   allow the user to override some settings with a custom function
-"
-
-if exists('*fastunite#loaded')
-  call fastunite#loaded()
 endif
 
 "
