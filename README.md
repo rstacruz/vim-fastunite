@@ -36,6 +36,8 @@ Plug 'tsukkee/unite-tag'
 map <C-p> [unite]p
 ```
 
+If you're not using vim-plug and it's the first time to install `vimproc`, be sure to run `make`.
+
 Install [the_silver_searcher] for faster searches. (optional, but recommended)
 
 ```sh

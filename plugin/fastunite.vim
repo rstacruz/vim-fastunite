@@ -58,7 +58,7 @@ let g:unite_source_mark_marks =
 
 if s:has_ag
   let g:unite_source_rec_async_command =
-    \ 'ag --nocolor --nogroup -g ""'
+    \ ['ag', '--nocolor', '--nogroup', '-g', '""']
 endif
 
 "
@@ -156,7 +156,7 @@ function! s:unite_map(key1, key2, opts)
 endfunction
 
 call s:unite_map('p', 'P',
-  \ "-resume -buffer-name=project -no-restore -input= -start-insert -hide-source-names -unique file directory file_rec/async")
+  \ "-resume -buffer-name=project -no-restore -input= -start-insert -hide-source-names -unique file directory file_rec")
 
 call s:unite_map('f', 'F',
   \ "-resume -buffer-name=file    -no-restore -input= -start-insert -hide-source-names -unique file file/new")
