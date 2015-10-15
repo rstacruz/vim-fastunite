@@ -156,10 +156,10 @@ function! s:unite_map(key1, key2, opts)
 endfunction
 
 call s:unite_map('p', 'P',
-  \ "-resume -buffer-name=project -input= -start-insert -hide-source-names -unique file directory file_rec/async")
+  \ "-buffer-name=project -no-restore -input= -start-insert -hide-source-names -unique file directory file_rec/async:!")
 
 call s:unite_map('f', 'F',
-  \ "-resume -buffer-name=file -input= -start-insert -hide-source-names -unique file file/new")
+  \ "-resume -buffer-name=file -no-restore -input= -start-insert -hide-source-names -unique file file/new")
 
 nnoremap <silent> [unite]g :<C-u>UniteWithInput grep:.<CR>
 nnoremap <silent> [unite]] :<C-u>UniteWithCursorWord -no-start-insert grep:.<CR>
