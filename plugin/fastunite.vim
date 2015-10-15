@@ -32,14 +32,23 @@ if s:has_tag
   let g:unite_source_tag_max_fname_length = 70
 endif
 
+let g:unite_prompt = '  →  '
+
+"
+" Loaded Hook:
+"   allow the user to override some settings with a custom function
+"
+
+silent! call fastunite#loaded()
+
 "
 " Unite Marks:
 "   show file marks (eg, `mA`) in unite-mark.vim, if it's available.
 "
 
 let g:unite_source_mark_marks =
-  \ "abcdefghijklmnopqrstuvwxyz" .
-  \ "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+      \ "abcdefghijklmnopqrstuvwxyz" .
+      \ "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 "
 " Improved Searching:
@@ -49,7 +58,8 @@ let g:unite_source_mark_marks =
 
 if s:has_ag
   let g:unite_source_rec_async_command =
-    \ ['ag', '--nocolor', '--nogroup', '-g', '""']
+        \ ['ag', '--follow', '--nocolor', '--nogroup',
+        \  '--hidden', '-g', '']
 endif
 
 "
@@ -75,7 +85,7 @@ endif
 let s:sorter = has("ruby") ? 'sorter_selecta' : 'sorter_rank'
 call unite#custom#source(s:file_recs, 'sorters', [s:sorter])
 call unite#custom#source(s:file_recs, 'matchers',
-  \ ['converter_relative_word', 'matcher_fuzzy'])
+      \ ['converter_relative_word', 'matcher_fuzzy'])
 
 "
 " Neomru:
@@ -84,8 +94,8 @@ call unite#custom#source(s:file_recs, 'matchers',
 
 if s:has_neomru
   call unite#custom#source(
-    \ 'neomru/file', 'matchers',
-    \ ['converter_relative_word', 'matcher_project_files', 'matcher_fuzzy'])
+        \ 'neomru/file', 'matchers',
+        \ ['converter_relative_word', 'matcher_project_files', 'matcher_fuzzy'])
 end
 
 "
@@ -102,37 +112,37 @@ nmap <leader>u [unite]
 "
 
 call unite#custom#profile('default', 'context', extend({
-  \ 'direction' : 'topleft',
-  \ 'prompt' : '  →  '
-  \ }, g:fastunite_default_options))
+      \ 'direction' : 'topleft',
+      \ 'prompt' : unite_prompt,
+      \ }, g:fastunite_default_options))
 
 call unite#custom#profile('source/grep', 'context', {
-  \ 'buffer_name' : 'grep',
-  \ 'no_quit' : 0
-  \ })
+      \ 'buffer_name' : 'grep',
+      \ 'no_quit' : 0
+      \ })
 
 call unite#custom#profile('source/buffer', 'context', {
-  \ 'buffer_name' : 'buffer',
-  \ 'start_insert' : 1
-  \ })
+      \ 'buffer_name' : 'buffer',
+      \ 'start_insert' : 1
+      \ })
 
 call unite#custom#profile('source/tag', 'context', {
-  \ 'buffer_name' : 'tag',
-  \ 'start_insert' : 1,
-  \ 'resume' : 1,
-  \ 'input' : ''
-  \ })
+      \ 'buffer_name' : 'tag',
+      \ 'start_insert' : 1,
+      \ 'resume' : 1,
+      \ 'input' : ''
+      \ })
 
 call unite#custom#profile('source/neomru/file', 'context', {
-  \ 'buffer_name' : 'mru',
-  \ 'start_insert' : 1
-  \ })
+      \ 'buffer_name' : 'mru',
+      \ 'start_insert' : 1
+      \ })
 
 call unite#custom#profile('source/neomru/directory', 'context', {
-  \ 'buffer_name' : 'dirs',
-  \ 'start_insert' : 1,
-  \ 'default_action' : 'cd'
-  \ })
+      \ 'buffer_name' : 'dirs',
+      \ 'start_insert' : 1,
+      \ 'default_action' : 'cd'
+      \ })
 
 "
 " Key Bindings:
@@ -147,10 +157,10 @@ function! s:unite_map(key1, key2, opts)
 endfunction
 
 call s:unite_map('p', 'P',
-  \ "-resume -buffer-name=project -no-restore -input= -start-insert -hide-source-names -unique file directory file_rec")
+      \ "-buffer-name=project -no-restore -input= -start-insert -hide-source-names -unique file directory file_rec/async:!")
 
 call s:unite_map('f', 'F',
-  \ "-resume -buffer-name=file    -no-restore -input= -start-insert -hide-source-names -unique file file/new")
+      \ "-resume -buffer-name=file -no-restore -input= -start-insert -hide-source-names -unique file file/new")
 
 nnoremap <silent> [unite]g :<C-u>UniteWithInput grep:.<CR>
 nnoremap <silent> [unite]] :<C-u>UniteWithCursorWord -no-start-insert grep:.<CR>
@@ -167,11 +177,11 @@ endif
 if s:has_outline
   " outline
   nnoremap <silent> [unite]o
-    \ :<C-u>Unite -buffer-name=outline
-    \ -auto-highlight
-    \ -vertical
-    \ -winwidth=30
-    \ outline<CR>
+        \ :<C-u>Unite -buffer-name=outline
+        \ -auto-highlight
+        \ -vertical
+        \ -winwidth=30
+        \ outline<CR>
 endif
 
 "
@@ -191,9 +201,9 @@ endfunction
 "
 
 autocmd BufEnter *
-\   if empty(&buftype)
-\|    nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -buffer-name=tag -no-start-insert -immediately tag<CR>
-\| endif
+      \   if empty(&buftype)
+      \|    nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -buffer-name=tag -no-start-insert -immediately tag<CR>
+      \| endif
 
 "
 " Improved Grep:
@@ -228,15 +238,6 @@ if s:has_airline
       return 1
     endif
   endfunction
-endif
-
-"
-" Loaded Hook:
-"   allow the user to override some settings with a custom function
-"
-
-if exists('*fastunite#loaded')
-  call fastunite#loaded()
 endif
 
 "
