@@ -48,8 +48,16 @@ let g:unite_source_mark_marks =
 "
 
 if s:has_ag
-  let g:unite_source_rec_async_command =
-    \ ['ag', '--nocolor', '--nogroup', '-g', '""']
+  " let g:unite_source_rec_async_command =
+  "   \ ['ag', '--nocolor', '--nogroup', '-g', '""']
+    " \ '--ignore', '*.jpg',
+    " \ '--ignore', '*.jpeg',
+    " \ '--ignore', '*.gif',
+    " \ '--ignore', '*.png',
+    " \ '--ignore', '*.ttf',
+    " \ '--ignore', '*.woff',
+    " \ '--ignore', '*.eot'
+    " \ ]
 endif
 
 "
@@ -72,10 +80,11 @@ if s:has_tag
   let s:file_recs .= ',tag'
 endif
 
-let s:sorter = has("ruby") ? 'sorter_selecta' : 'sorter_rank'
+let s:sorter = has('python') ? 'sorter_selecta' : 'sorter_rank'
 call unite#custom#source(s:file_recs, 'sorters', [s:sorter])
-call unite#custom#source(s:file_recs, 'matchers',
-  \ ['converter_relative_word', 'matcher_fuzzy'])
+call unite#custom#source(s:file_recs, 'matchers', [
+  \ 'converter_relative_word',
+  \ 'matcher_fuzzy' ])
 
 "
 " Neomru:
@@ -147,7 +156,7 @@ function! s:unite_map(key1, key2, opts)
 endfunction
 
 call s:unite_map('p', 'P',
-  \ "-resume -buffer-name=project -no-restore -input= -start-insert -hide-source-names -unique file directory file_rec")
+  \ "-resume -buffer-name=project -no-restore -input= -start-insert -hide-source-names -unique file_rec/git:--cached:--others:--exclude-standard")
 
 call s:unite_map('f', 'F',
   \ "-resume -buffer-name=file    -no-restore -input= -start-insert -hide-source-names -unique file file/new")
