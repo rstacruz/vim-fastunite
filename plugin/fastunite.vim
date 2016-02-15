@@ -123,7 +123,7 @@ call unite#custom#profile('source/grep', 'context', {
 
 call unite#custom#profile('source/buffer', 'context', {
       \ 'buffer_name' : 'buffer',
-      \ 'start_insert' : 1
+      \ 'start_insert' : 0
       \ })
 
 call unite#custom#profile('source/tag', 'context', {
