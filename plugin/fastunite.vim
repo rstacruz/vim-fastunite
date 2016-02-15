@@ -163,7 +163,6 @@ call s:unite_map('f', 'F',
       \ "-resume -buffer-name=file -no-restore -input= -start-insert -hide-source-names -unique file file/new")
 
 nnoremap <silent> [unite]g :<C-u>UniteWithInput grep:.<CR>
-nnoremap <silent> [unite]] :<C-u>UniteWithCursorWord -no-start-insert grep:.<CR>
 nnoremap <silent> [unite]G :<C-u>UniteResume grep<CR>
 
 call s:unite_map('b', 'B', "buffer")
@@ -184,28 +183,6 @@ if s:has_outline
         \ outline<CR>
 endif
 
-"
-" Uhhh just trying this out
-"
-
-nnoremap <silent> [unite]] :<C-u>call <SID>NavigateTo()<CR>
-function! s:NavigateTo()
-  let l:word = expand('<cword>')
-  exe 'Unite tag grep:. -buffer-name=navigate -input=' . l:word
-endfunction
-
-"
-" Unite Tag Integration:
-"   Use unite-tag instead of ^] for navigating to tags.
-"   :help unite-tag-customize
-"
-
-autocmd BufEnter *
-      \   if empty(&buftype)
-      \|    nnoremap <buffer> <C-]> :<C-u>UniteWithCursorWord -buffer-name=tag -no-start-insert -immediately tag<CR>
-      \| endif
-
-"
 " Improved Grep:
 "   Use ag for `:Unite grep` search if available.
 "   https://github.com/ggreer/the_silver_searcher
