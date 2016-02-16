@@ -199,6 +199,8 @@
 
     nnoremap <silent> [unite]b
         \ :<C-u>Unite
+        \ -auto-resize
+        \ -quick-match
         \ buffer<CR>
 
     nnoremap <silent> [unite]t
@@ -260,7 +262,7 @@
     call unite#custom#profile('source/buffer', 'context', {
             \ 'buffer_name' : 'buffer',
             \ 'quick-match' : 1,
-            \ 'winheight' : 10
+            \ 'auto-resize' : 1
         \ })
 
     call unite#custom#profile('source/tag', 'context', {
