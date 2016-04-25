@@ -204,8 +204,16 @@
         \ buffer<CR>
 
     nnoremap <silent> [unite]t
-        \ :<C-u>Unite
-        \ tag<CR>
+        \ :<c-u>Unite
+        \ tag<cr>
+
+    nnoremap <silent> [unite]n
+        \ :<c-u>Unite
+        \ neobundle<cr>
+
+    nnoremap <silent> [unite]N
+        \ :<c-u>Unite
+        \ neobundle/update<cr>
 
     if s:has_outline
         nnoremap <silent> [unite]o
