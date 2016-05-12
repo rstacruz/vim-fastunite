@@ -209,11 +209,11 @@
 
     nnoremap <silent> [unite]n
         \ :<c-u>Unite
-        \ neobundle<cr>
+        \ dein<cr>
 
-    nnoremap <silent> [unite]N
-        \ :<c-u>Unite
-        \ neobundle/update<cr>
+    " nnoremap <silent> [unite]N
+    "     \ :<c-u>Unite
+    "     \ dein/update<cr>
 
     if s:has_outline
         nnoremap <silent> [unite]o
