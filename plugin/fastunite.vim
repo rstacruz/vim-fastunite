@@ -211,9 +211,13 @@
         \ :<c-u>Unite
         \ dein<cr>
 
-    " nnoremap <silent> [unite]N
-    "     \ :<c-u>Unite
-    "     \ dein/update<cr>
+    nnoremap <silent> [unite]D
+        \ :<c-u>Unite
+        \ dein/log<cr>
+
+    nnoremap <silent> [unite]L
+        \ :<c-u>Unite
+        \ dein/log<cr>
 
     if s:has_outline
         nnoremap <silent> [unite]o
