@@ -60,9 +60,9 @@
     endif
 
     if s:has_ag
-        let g:unite_source_grep_command = 'ag'
-        let g:unite_source_grep_default_opts = '--vimgrep'
-        let g:unite_source_grep_recursive_opt = ''
+        let g:unite_source_grep_command = 'rg'
+        let g:unite_source_grep_default_opts = '--hidden --no-heading --vimgrep -S'
+        let g:unite_source_grep_recursive_opts = ''
     endif
 
     " Airline {
