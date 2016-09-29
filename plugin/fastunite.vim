@@ -43,6 +43,7 @@
     let s:has_tag = globpath(&rtp, "autoload/unite/sources/tag.vim") != ""
     let s:has_marks = globpath(&rtp, "autoload/unite/sources/mark.vim") != ""
     let s:has_ag = executable('ag')
+    let s:has_ripgrep = executable('rg')
 
 " }
 
@@ -59,10 +60,17 @@
       let g:unite_source_tag_max_fname_length = 70
     endif
 
-    if s:has_ag
+    if s:has_ripgrep
+        "https://github.com/Shougo/unite.vim/issues/1198#issuecomment-250415002
         let g:unite_source_grep_command = 'rg'
-        let g:unite_source_grep_default_opts = '--hidden --no-heading --vimgrep -S'
-        let g:unite_source_grep_recursive_opts = ''
+        let g:unite_source_grep_default_opts = '-wrap --hidden --no-heading --vimgrep -S'
+        let g:unite_source_grep_recursive_opt = ''
+    elseif s:has_ag
+        let g:unite_source_grep_command = 'ag'
+        let g:unite_source_grep_default_opts =
+        \ '-i --vimgrep --hidden --ignore ' .
+        \ '''.hg'' --ignore ''.svn'' --ignore ''.git'' --ignore ''.bzr'''
+        let g:unite_source_grep_recursive_opt = ''
     endif
 
     " Airline {
