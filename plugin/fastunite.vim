@@ -192,7 +192,7 @@
         \ -input= 
         \ -start-insert
         \ -hide-source-names
-        \ -uniqu
+        \ -unique
         \ file/new<CR>
 
     nnoremap <silent> [unite]l
