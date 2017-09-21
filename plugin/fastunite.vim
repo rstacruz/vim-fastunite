@@ -180,7 +180,7 @@ if s:has_outline
     \ -auto-highlight
     \ -vertical
     \ -winwidth=30
-    \ outline<CR>
+    \ outline:!<CR>
 endif
 
 "
